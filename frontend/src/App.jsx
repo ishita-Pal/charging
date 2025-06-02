@@ -1,3 +1,4 @@
+
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import ProtectedRoute from './Components/ProtectedRoutes';
 import LoginPage from './Pages/LoginPage';
@@ -16,4 +17,5 @@ function App() {
     </BrowserRouter>
   );
 }
+
 export default App;
