@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const api = axios.create({
-  baseURL: 'http://localhost:5000/api',
+  baseURL: 'https://charging-6.onrender.com/',
 })
 
 // Request interceptor to add auth token
