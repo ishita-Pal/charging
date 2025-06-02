@@ -1,12 +1,12 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:5000/api/charging-stations';
+const API_URL = 'https://charging-6.onrender.com/api/charging-stations';
 
 const getToken = () => {
   const token = localStorage.getItem('token');
   if (!token) {
     console.error('No token found in localStorage');
-    // Redirect to login or handle missing token
+  
     window.location.href = '/login';
   }
   return token;
