@@ -1,24 +1,18 @@
-import { Routes, Route } from 'react-router-dom'
-import LoginPage from './pages/LoginPage'
-import SignupPage from './pages/SignupPage'
-import DashboardPage from './pages/DashboardPage'
-import ProtectedRoute from './Components/ProtectedRoutes'
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import ProtectedRoute from './Components/ProtectedRoutes';
+import LoginPage from './Pages/LoginPage';
+import DashboardPage from './Pages/DashboardPage';
 
 function App() {
   return (
-    <Routes>
-      <Route path="/" element={<LoginPage />} />
-      <Route path="/signup" element={<SignupPage />} />
-      <Route 
-        path="/dashboard" 
-        element={
-          <ProtectedRoute>
-            <DashboardPage />
-          </ProtectedRoute>
-        } 
-      />
-    </Routes>
-  )
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<LoginPage />} />
+        <Route element={<ProtectedRoute />}>
+          <Route path="/dashboard" element={<DashboardPage />} />
+        </Route>
+        <Route path="*" element={<div>Not Found</div>} />
+      </Routes>
+    </BrowserRouter>
+  );
 }
-
-export default App
