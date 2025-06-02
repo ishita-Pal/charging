@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:5000/api/charging-stations';
+const API_URL = 'https://charging-6.onrender.com/charging-stations';
 
 const getToken = () => {
   const token = localStorage.getItem('token');
