@@ -3,8 +3,11 @@ import { FiMail, FiLock } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 import { login } from '../services/auth';
 import './LoginForm.css'; // Importing the external CSS
+import {useNavigate} from 'react-router-dom'
+
 
 const LoginForm = () => {
+  const navigate = useNavigate();
   const [credentials, setCredentials] = useState({
     email: '',
     password: ''
@@ -25,7 +28,7 @@ const LoginForm = () => {
     setError('');
     try {
       await login(credentials);
-      window.location.href = '/dashboard';
+navigate('/dashboard');
     } catch (err) {
       setError(err.response?.data?.message || 'Login failed');
     } finally {
