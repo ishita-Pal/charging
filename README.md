@@ -107,34 +107,7 @@ Google Maps
   Obtain an API key from Google Cloud Console
   Add the key to the frontend .env file
 
-Project Structure
-Backend
-backend/
-├── config/
-│   └── db.js          # Database configuration
-├── controllers/
-│   ├── authController.js
-│   └── chargingStationController.js
-├── middleware/
-│   └── auth.js        # Authentication middleware
-├── models/
-│   ├── ChargingStation.js
-│   └── User.js
-├── routes/
-│   ├── authRoutes.js
-│   └── chargingStationRoutes.js
-└── app.js             # Main application file
-Frontend
-frontend/
-├── public/
-├── src/
-│   ├── assets/        # Static assets
-│   ├── components/    # Reusable components
-│   ├── pages/         # Application pages
-│   ├── services/      # API services
-│   ├── App.js         # Main application component
-│   └── index.js       # Entry point
-└── package.json
+
 
 Deployment
 The application can be deployed using:
