@@ -1,53 +1,146 @@
-Charging Station Management 
+EV Charging Station 
+A full-stack application for managing electric vehicle charging stations, featuring user authentication, CRUD operations, and interactive map visualization.
 
-A full-stack web application to manage EV charging stations using **Node.js**, **Express**, **Vue.js**, and MySQL. Includes user authentication and map integration for a complete UI/UX experience.
-Features
-Backend (Node.js + Express)
-- RESTful API for CRUD operations on Charging Stations
-- JWT-based user authentication:
-  - Register & Login endpoints
-  - Protected routes for station management
-- Charging Station Data:
-  - Name
-  - Location (Latitude & Longitude)
-  - Status (Active/Inactive)
-  - Power Output (kW)
-  - Connector Type
+1. Features:
+-> Backend (Node.js/Express)
+    User Authentication: JWT-based signup/login with password hashing
+    CRUD Operations: Create, read, update, and delete charging stations
 
-Frontend (Vue.js+jsx)
-- User login screen connected to backend auth
-- Charging Station Listing Page with:
-  - Filters (Status, Power Output, Connector Type)
-  - Add/Edit/Delete functionality
-- Map View using Google Maps or OpenStreetMap:
-  - Displays chargers as markers
-  - Clickable markers to view charger details
+->Database: MySQL with Sequelize ORM
+  SSL Support: Secure database connections
+  API Endpoints: RESTful API for stations and auth
 
-Deploymed
-- Frontend deployed on: `https://your-frontend-url.com`
-- Backend deployed on: `https://your-backend-api.com`
+->Frontend (React)
+  User Authentication: Login and signup forms with validation
+  Interactive Map: Google Maps integration with station markers
+  Dashboard: Filterable station list with power/status filters
+  CRUD Interface: Add, edit, and delete stations with modals
+  Responsive Design: Works on all device sizes
+  Protected Routes: Authentication-based navigation
 
+2. Technologies Used
+  Backend
+  Node.js
+  Express
+  Sequelize (MySQL)
+  JWT Authentication
+  Bcrypt
+  Dotenv
+  Frontend
+  React
+  React Router
+  Google Maps API
+  Axios
+  SweetAlert2
+  React Icons
 
+3. Installation
+  Prerequisites
+    Node.js (v14+)
+    MySQL
+    Google Maps API Key
 
-Setup Instructions
+  Backend Setup
+    Clone the repository:
+    ```bash
+    git clone https://github.com/yourusername/ev-charging-system.git
+    cd ev-charging-system/backend
+    ```
+    Install dependencies:
+    
+    ```bash
+    npm install
+    ```
+   Create a .env file in the backend directory with:
+    ```bash
+     env
+    DB_NAME=your_db_name
+    DB_USER=your_db_user
+    DB_PASSWORD=your_db_password
+    DB_HOST=localhost
+    DB_PORT=3306
+    JWT_SECRET=your_jwt_secret
+    ```
+   Set up the database:
+    npx sequelize-cli db:create
+    npx sequelize-cli db:migrate
+  
+  Frontend Setup
+    Navigate to the frontend directory:
+    ```bash
+    cd ../frontend
+    ```
+    Install dependencies:
+    ```bash
+    npm install
+    ```
 
-Backend Setup
+4.Running the Application
+  Start Backend
+    ```bash
+    cd backend
+    npm start
+    ```
+    
+  Start Frontend
+  ```bash
+  cd frontend
+  npm start
+```
 
-1. Navigate to the backend directory:
-   ```bash
-   cd backend
-2.Install dependencies: npm install
-3.Configure environment variables (.env):
-  PORT=5000
-  DB_URI=your_database_uri
-  JWT_SECRET=your_secret_key
+  The application will be available at:
+  Backend: http://localhost:5000
+  Frontend: http://localhost:5143
 
-4.Start the server: npm start
+5.Configuration
+Database
+    Modify the .env file to match your MySQL configuration
+    Supported environment variables:
+    DB_NAME: Database name
+    DB_USER: Database username 
+    DB_PASSWORD: Database password
+    DB_HOST: Database host
+    DB_PORT: Database port
+    SSL: Set to 'true' for SSL connections
 
-1. Navigate to the frontend directory:
-cd frontend
+Google Maps
+  Obtain an API key from Google Cloud Console
+  Add the key to the frontend .env file
 
-2.Install dependencies: npm install
+Project Structure
+Backend
+backend/
+├── config/
+│   └── db.js          # Database configuration
+├── controllers/
+│   ├── authController.js
+│   └── chargingStationController.js
+├── middleware/
+│   └── auth.js        # Authentication middleware
+├── models/
+│   ├── ChargingStation.js
+│   └── User.js
+├── routes/
+│   ├── authRoutes.js
+│   └── chargingStationRoutes.js
+└── app.js             # Main application file
+Frontend
+frontend/
+├── public/
+├── src/
+│   ├── assets/        # Static assets
+│   ├── components/    # Reusable components
+│   ├── pages/         # Application pages
+│   ├── services/      # API services
+│   ├── App.js         # Main application component
+│   └── index.js       # Entry point
+└── package.json
 
-3. Start the frontend: npm run serve
-
+Deployment
+The application can be deployed using:
+Backend: Host on services like Render, Heroku, or AWS
+Frontend: Deploy to Netlify, Vercel, or S3
+Database: Use managed services like AWS RDS or Planetscale or Aiven
+Update the frontend .env file with your production API URL:
+env
+REACT_APP_API_BASE_URL=https://your-production-api-url.com
