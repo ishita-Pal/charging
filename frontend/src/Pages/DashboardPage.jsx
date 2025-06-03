@@ -105,39 +105,78 @@ const DashboardPage = () => {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const newStation = {
-        name: editingStation.name,
-        latitude: parseFloat(editingStation.latitude),
-        longitude: parseFloat(editingStation.longitude),
-        status: editingStation.status,
-        powerOutput: parseFloat(editingStation.powerOutput),
-        connectorType: editingStation.connectorType
-      };
+  e.preventDefault();
 
-      if (editingStation.id) {
-        await updateStation(editingStation.id, newStation);
-      } else {
-        await createStation(newStation);
-      }
+  const lat = parseFloat(editingStation.latitude);
+  const lng = parseFloat(editingStation.longitude);
+  const power = parseFloat(editingStation.powerOutput);
 
-      setShowModal(false);
-      setEditingStation(null);
-      await loadStations();
+  // Coordinate validation
+  if (isNaN(lat) || isNaN(lng)) {
+    Swal.fire({
+      icon: 'error',
+      title: 'Invalid Coordinates',
+      text: 'Latitude and Longitude must be numbers.',
+    });
+    return;
+  }
 
-      Swal.fire({
-        title: 'Saved!',
-        text: 'Station information has been successfully saved.',
-        icon: 'success',
-        confirmButtonText: 'OK',
-        draggable: true
-      });
+  if (lat < -90 || lat > 90 || lng < -180 || lng > 180) {
+    Swal.fire({
+      icon: 'error',
+      title: 'Invalid Coordinates',
+      text: 'Latitude must be between -90 and 90. Longitude must be between -180 and 180.',
+    });
+    return;
+  }
 
-    } catch (error) {
-      console.error('Submit failed:', error.response?.data || error.message);
+  // Power output validation
+  if (isNaN(power) || power <= 0) {
+    Swal.fire({
+      icon: 'error',
+      title: 'Invalid Power Output',
+      text: 'Power output must be a positive number.',
+    });
+    return;
+  }
+
+  try {
+    const newStation = {
+      name: editingStation.name,
+      latitude: lat,
+      longitude: lng,
+      status: editingStation.status,
+      powerOutput: power,
+      connectorType: editingStation.connectorType
+    };
+
+    if (editingStation.id) {
+      await updateStation(editingStation.id, newStation);
+    } else {
+      await createStation(newStation);
     }
-  };
+
+    setShowModal(false);
+    setEditingStation(null);
+    await loadStations();
+
+    Swal.fire({
+      title: 'Saved!',
+      text: 'Station information has been successfully saved.',
+      icon: 'success',
+      confirmButtonText: 'OK'
+    });
+
+  } catch (error) {
+    console.error('Submit failed:', error.response?.data || error.message);
+    Swal.fire({
+      icon: 'error',
+      title: 'Error',
+      text: error.response?.data?.message || 'Failed to save the station.',
+    });
+  }
+};
+
 
   if (loading || !isLoaded) {
     return <div className="loading">Loading stations and map...</div>;
