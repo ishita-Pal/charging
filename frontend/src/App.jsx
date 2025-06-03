@@ -1,7 +1,7 @@
 import { Routes, Route } from 'react-router-dom'
-import LoginPage from './pages/LoginPage'
-import SignupPage from './pages/SignupPage'
-import DashboardPage from './pages/DashboardPage'
+import LoginPage from './Pages/LoginPage'
+import SignupPage from './Pages/SignupPage'
+import DashboardPage from './Pages/DashboardPage'
 import ProtectedRoute from './Components/ProtectedRoutes'
 
 function App() {
