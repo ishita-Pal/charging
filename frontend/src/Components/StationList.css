@@ -185,3 +185,7 @@
   border-radius: 8px;
   font-size: 0.9rem;
 }
+
+.swal2-container {
+  z-index: 20000 !important;
+}
