@@ -113,7 +113,6 @@ npm start
 🔗 The application will be available at:
 
 Backend: http://localhost:5000
-
 Frontend: http://localhost:5143
 
 🔧 Configuration
@@ -139,18 +138,10 @@ Copy code
 REACT_APP_GOOGLE_MAPS_API_KEY=your_api_key
 🌐 Deployment
 The application can be deployed using:
-
 Backend: Render, Heroku, AWS
-
 Frontend: Netlify, Vercel, AWS S3
-
 Database: AWS RDS, Planetscale, Aiven
 
-Update the frontend .env file with your production API URL:
-
-env
-Copy code
-REACT_APP_API_BASE_URL=https://charging-6.onrender.com
 🔗 Live Links
 🌐 Frontend: https://ee-wvnr.onrender.com/
 ⚙️ Backend: https://charging-6.onrender.com/
