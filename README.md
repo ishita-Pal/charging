@@ -130,12 +130,6 @@ DB_PORT=3306
 SSL=true  
 🗺️ Google Maps
 Obtain an API key from the Google Cloud Console
-
-Add the key to the frontend .env file:
-
-env
-Copy code
-REACT_APP_GOOGLE_MAPS_API_KEY=your_api_key
 🌐 Deployment
 The application can be deployed using:
 Backend: Render, Heroku, AWS
@@ -144,6 +138,7 @@ Database: AWS RDS, Planetscale, Aiven
 
 🔗 Live Links
 🌐 Frontend: https://ee-wvnr.onrender.com/
+
 ⚙️ Backend: https://charging-6.onrender.com/
 
 
